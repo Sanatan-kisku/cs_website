@@ -2,7 +2,7 @@ const sectionIds = ['notice-board', 'quick-links', 'student-corner'];
 
 async function loadContent() {
   for (const id of sectionIds) {
-    const res = await fetch(`/api/content/${id}`);
+    const res = await fetch(`https://cs-website-server.onrender.com/api/content/${id}`);
     const data = await res.json();
     document.getElementById(id).innerHTML = data.content;
   }
@@ -10,7 +10,7 @@ async function loadContent() {
 async function saveContent(id) {
   const token = localStorage.getItem('token');
   const content = document.getElementById(id).innerHTML;
-  await fetch(`/api/content/${id}`, {
+  await fetch(`https://cs-website-server.onrender.com/api/content/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
